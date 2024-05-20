@@ -200,7 +200,7 @@ echo "$domain" | httpx | anew "$folder/live_subdomain.txt"
 # Extract .js Subdomains
 echo -e "\e[33mExtract .js Subdomains...\e[0m"
 cat "$folder/live_subdomain.txt" | getJS --complete | anew "$folder/JS1.txt"
-echo -e "\e[1;31m$(wc -l < "$folder/JS.txt")\e[0m"
+echo -e "\e[1;31m$(wc -l < "$folder/JS1.txt")\e[0m"
 
 # Executando gau para encontrar endpoints
 echo -e "\e[33mFinding endpoints with gau...\e[0m"
