@@ -44,12 +44,7 @@ echo "$domain" | httpx -ports '443,80,8080,8000,8888' -threads 100 | anew "$fold
 
 # Executando Naabu Portas Scan
 echo -e "\e[33mRunning naabu...\e[0m"
-naabu -list "$folder/live_subdomain.txt" -top-ports 100 -c 50 -o "$folder/PortScan.txt"
-
-# filter subdomains by keywords
-echo -e "\e[33mfilter subdomains by keywords...\e[0m"
-cat "$folder/live_subdomain.txt" | egrep -i "internal|api|test|prod|private|secret|git|login|admin|staging|dev|jira|intranet|vip|portal|register|pass|reset|client|database|server|backup|Credential|database|docker|encryption|security|authorization|authentication|monitoring|logging|certificate|token|integration|endpoint|validation|configuration|deployment" > "$folder/active_priority.txt"
-echo -e "\e[1;31m$(wc -l < "$folder/active_priority.txt")\e[0m"
+cat "$folder/live_subdomain.txt" | naabu -top-ports 100 -c 50 -o "$folder/PortScan.txt"
 
 # Extract .js Subdomains
 echo -e "\e[33mExtract .js Subdomains...\e[0m"
