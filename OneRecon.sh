@@ -40,7 +40,7 @@ folder="$domain"
 mkdir -p "$folder"
 
 # Criando pasta domain alvo
-echo "$domain" | httpx -ports '443,80,8080,8000,8888' -threads 100 | anew "$folder/live_subdomain.txt"
+echo "$domain" | httpx -threads 100 | anew "$folder/live_subdomain.txt"
 
 # Executando Naabu Portas Scan
 echo -e "\e[33mRunning naabu...\e[0m"
